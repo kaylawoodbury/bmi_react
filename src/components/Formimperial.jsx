@@ -8,7 +8,7 @@ const Imperial = props => {
         type="number"
         required
         placeholder="Weight in pounds"
-        value={props.weight}
+        value={props.weightlb}
         name="weight"
         id="weight"
         onChange={props.onChangeHandler}
@@ -18,7 +18,7 @@ const Imperial = props => {
         type="number"
         required
         placeholder="Height in inches"
-        value={props.height}
+        value={props.heightin}
         name="height"
         id="height"
         onChange={props.onChangeHandler}

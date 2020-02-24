@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import Form from "./components/Form";
 import Message from "./components/Message";
 import { calculateBmi } from "./helpers/bmiHelper";
+import { calculateBmiImperial } from "./helpers/bmiHelper";
 import Imperial from "./components/Formimperial";
 
 class App extends Component {
@@ -10,7 +11,7 @@ class App extends Component {
     weight: "",
     height: "",
     bmiValue: "",
-    bmiMessage: ""
+    bmiMessage: "",
   };
 
   onChangeHandler = e => this.setState({ [e.target.name]: e.target.value });
@@ -18,6 +19,17 @@ class App extends Component {
   onSubmitHandler = e => {
     e.preventDefault();
     const [bmiValue, bmiMessage] = calculateBmi(
+      this.state.weight,
+      this.state.height
+    );
+    this.setState({ bmiValue: bmiValue, bmiMessage: bmiMessage });
+  };
+
+  onChangeHandler = f => this.setState({ [f.target.name]: f.target.value });
+
+  onSubmitHandler = f => {
+    f.preventDefault();
+    const [bmiValue, bmiMessage] = calculateBmiImperial (
       this.state.weight,
       this.state.height
     );
