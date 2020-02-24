@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import Form from "./components/Form";
 import Message from "./components/Message";
 import { calculateBmi } from "./helpers/bmiHelper";
+import Imperial from "./components/Formimperial";
 
 class App extends Component {
   state = {
@@ -26,6 +27,8 @@ class App extends Component {
   render() {
     return (
       <div>
+        <h1>Metric</h1>
+      <div>
         <Form
           weight={this.state.weight}
           height={this.state.height}
@@ -38,6 +41,23 @@ class App extends Component {
             bmiMessage={this.state.bmiMessage}
           />
         )}
+      </div>
+
+        <h1>Imperial</h1>
+      <div>
+        <Imperial
+          weight={this.state.weight}
+          height={this.state.height}
+          onChangeHandler={this.onChangeHandler}
+          onSubmitHandler={this.onSubmitHandler}
+        />
+        {this.state.bmiValue && (
+          <Message
+            bmiValue={this.state.bmiValue}
+            bmiMessage={this.state.bmiMessage}
+          />
+        )}
+        </div>
       </div>
     );
   }
