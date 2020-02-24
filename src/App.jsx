@@ -12,6 +12,8 @@ class App extends Component {
     height: "",
     bmiValue: "",
     bmiMessage: "",
+    bmiValueImperial: "",
+    bmiMessageImperial: "",
   };
 
   onChangeHandler = e => this.setState({ [e.target.name]: e.target.value });
@@ -22,19 +24,14 @@ class App extends Component {
       this.state.weight,
       this.state.height
     );
-    this.setState({ bmiValue: bmiValue, bmiMessage: bmiMessage });
-  };
-
-  onChangeHandler = f => this.setState({ [f.target.name]: f.target.value });
-
-  onSubmitHandler = f => {
-    f.preventDefault();
-    const [bmiValue, bmiMessage] = calculateBmiImperial (
-      this.state.weight,
-      this.state.height
+    const [bmiValueImperial, bmiMessageImperial] = calculateBmiImperial(
+      this.state.weightlb,
+      this.state.heightin
     );
-    this.setState({ bmiValue: bmiValue, bmiMessage: bmiMessage });
+    this.setState({ bmiValue: bmiValue, bmiMessage: bmiMessage, bmiValueImperial: bmiValueImperial, bmiMessageImperial: bmiMessageImperial  });
   };
+
+
 
   render() {
     return (
@@ -53,22 +50,24 @@ class App extends Component {
             bmiMessage={this.state.bmiMessage}
           />
         )}
+        
       </div>
 
         <h1>Imperial</h1>
       <div>
         <Imperial
-          weight={this.state.weight}
-          height={this.state.height}
+          weightlb={this.state.weightlb}
+          heightin={this.state.heightin}
           onChangeHandler={this.onChangeHandler}
           onSubmitHandler={this.onSubmitHandler}
         />
         {this.state.bmiValue && (
-          <Message
-            bmiValue={this.state.bmiValue}
-            bmiMessage={this.state.bmiMessage}
-          />
-        )}
+            <Message
+              bmiValueImperial={this.state.bmiValueImperial}
+              bmiMessageImperial={this.state.bmiMessageImperial}
+            />
+          )}
+
         </div>
       </div>
     );
