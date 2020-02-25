@@ -3,17 +3,13 @@ import React, { Component } from "react";
 import Form from "./components/Form";
 import Message from "./components/Message";
 import { calculateBmi } from "./helpers/bmiHelper";
-import { calculateBmiImperial } from "./helpers/bmiHelper";
-import Imperial from "./components/Formimperial";
 
 class App extends Component {
   state = {
     weight: "",
     height: "",
     bmiValue: "",
-    bmiMessage: "",
-    bmiValueImperial: "",
-    bmiMessageImperial: "",
+    bmiMessage: ""
   };
 
   onChangeHandler = e => this.setState({ [e.target.name]: e.target.value });
@@ -24,19 +20,23 @@ class App extends Component {
       this.state.weight,
       this.state.height
     );
-    const [bmiValueImperial, bmiMessageImperial] = calculateBmiImperial(
-      this.state.weightlb,
-      this.state.heightin
-    );
-    this.setState({ bmiValue: bmiValue, bmiMessage: bmiMessage, bmiValueImperial: bmiValueImperial, bmiMessageImperial: bmiMessageImperial  });
+    
+    this.setState({ bmiValue: bmiValue, bmiMessage: bmiMessage });
   };
 
+  <switch>
+    <Route exact path='/'component={App}></Route>
+    <Route exact path='/imperial'component={Imperial}></Route>
+  </switch>
 
 
   render() {
     return (
       <div>
-        <h1>Metric</h1>
+        <h1>BMI Calculator</h1>
+        <h3>Metric</h3>
+        <h3 className="link"><a href="./src/imperial.jsx">Imperial</a></h3>
+        
       <div>
         <Form
           weight={this.state.weight}
@@ -52,23 +52,6 @@ class App extends Component {
         )}
         
       </div>
-
-        <h1>Imperial</h1>
-      <div>
-        <Imperial
-          weightlb={this.state.weightlb}
-          heightin={this.state.heightin}
-          onChangeHandler={this.onChangeHandler}
-          onSubmitHandler={this.onSubmitHandler}
-        />
-        {this.state.bmiValue && (
-            <Message
-              bmiValueImperial={this.state.bmiValueImperial}
-              bmiMessageImperial={this.state.bmiMessageImperial}
-            />
-          )}
-
-        </div>
       </div>
     );
   }

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import Form from "./components/Form";
+import Formimperial from "./components/Formimperial";
 import Message from "./components/Message";
 import { calculateBmiImperial } from "./helpers/bmiHelper";
 
@@ -26,7 +26,7 @@ class Imperial extends Component {
   render() {
     return (
       <div>
-        <Form
+        <Formimperial
           weight={this.state.weight}
           height={this.state.height}
           onChangeHandler={this.onChangeHandler}
