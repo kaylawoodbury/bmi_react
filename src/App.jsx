@@ -5,6 +5,7 @@ import Message from "./components/Message";
 import { calculateBmi } from "./helpers/bmiHelper";
 import bmibarometer from "./data/bmibarometer.jpg";
 
+
 class App extends Component {
   state = {
     unit: "",
@@ -31,6 +32,7 @@ class App extends Component {
   render() {
     return (
       <div>
+        
         <h1>BMI Calculator</h1>
         <p>Choose the unit of measure for your weight and height, then enter the data to calculate your BMI.</p>
       <div>
@@ -48,7 +50,7 @@ class App extends Component {
           />
         )}
         
-      </div>
+      </div><br/><br/><br/>
           <img src={bmibarometer}/>
       </div>
     );
