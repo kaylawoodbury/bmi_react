@@ -2,8 +2,8 @@ import React from "react";
 
 const Form = props => {
 
-  const wtplaceholder = props.unit == "metric" ? "Weight in kgs" : "Weight in lbs"
-  const htplaceholder = props.unit == "metric" ? "Height in cm" : "Height in inches"
+  const wtplaceholder = props.unit == "imperial" ?  "Weight in lbs" : "Weight in kgs"
+  const htplaceholder = props.unit == "imperial" ? "Height in inches" : "Height in cm" 
 
   return (
     <form onSubmit={props.onSubmitHandler}>
@@ -11,6 +11,7 @@ const Form = props => {
         name="unit"
         id="unit"
         type="text"
+        default="metric"
         onChange={props.onChangeHandler}
       >
         <option value="metric">Metric</option>
