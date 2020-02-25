@@ -6,6 +6,7 @@ import { calculateBmi } from "./helpers/bmiHelper";
 
 class App extends Component {
   state = {
+    unit: "",
     weight: "",
     height: "",
     bmiValue: "",
@@ -18,15 +19,22 @@ class App extends Component {
     e.preventDefault();
     const [bmiValue, bmiMessage] = calculateBmi(
       this.state.weight,
-      this.state.height
+      this.state.height,
+      this.state.unit
     );
+    
     this.setState({ bmiValue: bmiValue, bmiMessage: bmiMessage });
   };
+
 
   render() {
     return (
       <div>
+        <h1>BMI Calculator</h1>
+        <p>Choose the unit of measure for your weight and height, then enter the data to calculate your BMI.</p>
+      <div>
         <Form
+          unit={this.state.unit}
           weight={this.state.weight}
           height={this.state.height}
           onChangeHandler={this.onChangeHandler}
@@ -38,6 +46,8 @@ class App extends Component {
             bmiMessage={this.state.bmiMessage}
           />
         )}
+        
+      </div>
       </div>
     );
   }
