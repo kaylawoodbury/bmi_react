@@ -6,6 +6,7 @@ import { calculateBmi } from "./helpers/bmiHelper";
 
 class App extends Component {
   state = {
+    unit: "",
     weight: "",
     height: "",
     bmiValue: "",
@@ -18,27 +19,22 @@ class App extends Component {
     e.preventDefault();
     const [bmiValue, bmiMessage] = calculateBmi(
       this.state.weight,
-      this.state.height
+      this.state.height,
+      this.state.unit
     );
     
     this.setState({ bmiValue: bmiValue, bmiMessage: bmiMessage });
   };
-
-  <switch>
-    <Route exact path='/'component={App}></Route>
-    <Route exact path='/imperial'component={Imperial}></Route>
-  </switch>
 
 
   render() {
     return (
       <div>
         <h1>BMI Calculator</h1>
-        <h3>Metric</h3>
-        <h3 className="link"><a href="./src/imperial.jsx">Imperial</a></h3>
-        
+        <p>Choose the unit of measure for your weight and height, then enter the data to calculate your BMI.</p>
       <div>
         <Form
+          unit={this.state.unit}
           weight={this.state.weight}
           height={this.state.height}
           onChangeHandler={this.onChangeHandler}

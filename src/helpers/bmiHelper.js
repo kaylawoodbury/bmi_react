@@ -1,14 +1,10 @@
-export const calculateBmi = (weight, height) => {
-    const bmiValue = (weight / (((height / 100) * height) / 100)).toFixed(2);
+export const calculateBmi = (weight, height, unit) => {
+    const bmiValue = unit == 'metric' ? (weight / (((height / 100) * height) / 100)).toFixed(2) : ((weight / (height * height)) * 703).toFixed(2);
     const bmiMessage = setBMIMessage(bmiValue);
     return [bmiValue, bmiMessage];
   };
 
-export  const calculateBmiImperial = (weightlb, heightin) => {
-    const bmiValueImperial = ((weightlb / (heightin * heightin)) * 703).toFixed(2);
-    const bmiMessageImperial= setBMIMessage(bmiValueImperial);
-    return [bmiValueImperial, bmiMessageImperial];
-  };
+
   
   const setBMIMessage = finalBMI => {
     if (finalBMI < 18.5) {
