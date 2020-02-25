@@ -3,6 +3,12 @@ export const calculateBmi = (weight, height) => {
     const bmiMessage = setBMIMessage(bmiValue);
     return [bmiValue, bmiMessage];
   };
+
+  export const calculateBmiImperial = (weight, height) => {
+    const bmiValue = ((weight / (height * height)) * 703).toFixed(2);
+    const bmiMessage = setBMIMessage(bmiValue);
+    return [bmiValue, bmiMessage];
+  };
   
   const setBMIMessage = finalBMI => {
     if (finalBMI < 18.5) {
